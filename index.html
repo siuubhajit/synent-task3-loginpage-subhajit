@@ -52,15 +52,18 @@
 
 
 
-          <input
-            type="password"
-            id="password"
-            name="password"
-            placeholder="Enter your password"
-            autocomplete="current-password"
-            aria-describedby="password-error"
-            required
-          >
+          <div class="password-field">
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Enter your password"
+              autocomplete="current-password"
+              aria-describedby="password-error"
+              required
+            >
+            <button type="button" class="toggle-password" id="toggle-password" aria-label="Show password" aria-pressed="false">Show</button>
+          </div>
           <p class="field-error" id="password-error" role="alert"></p>
         </div>
 
@@ -100,6 +103,16 @@
 
   emailInput.addEventListener("blur", validateEmail);
   passwordInput.addEventListener("blur", validatePassword);
+
+  var toggleBtn = document.getElementById("toggle-password");
+
+  toggleBtn.addEventListener("click", function () {
+    var showing = passwordInput.type === "text";
+    passwordInput.type = showing ? "password" : "text";
+    toggleBtn.textContent = showing ? "Show" : "Hide";
+    toggleBtn.setAttribute("aria-label", showing ? "Show password" : "Hide password");
+    toggleBtn.setAttribute("aria-pressed", showing ? "false" : "true");
+  });
 
   form.addEventListener("submit", function (e) {
     validateEmail();

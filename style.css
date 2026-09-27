@@ -144,6 +144,32 @@ input {
   box-shadow: 0 0 0 4px rgba(109, 74, 255, 0.13);
 }
 
+.password-field {
+  position: relative;
+}
+
+.password-field input {
+  padding-right: 60px;
+}
+
+.toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  border: 0;
+  background: none;
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 6px;
+}
+
+.toggle-password:hover {
+  color: var(--accent-dark);
+}
+
 .field-error {
   min-height: 18px;
   margin-top: 6px;
