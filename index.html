@@ -6,6 +6,15 @@
   <meta name="description" content="Login Page">
   <title>Login Page</title>
   <link rel="stylesheet" href="style.css">
+  <script>
+    (function () {
+      var saved = null;
+      try { saved = localStorage.getItem("theme"); } catch (e) {}
+      var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      var theme = saved || (prefersDark ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
 </head>
 
 
@@ -19,7 +28,7 @@
 
 <section class="login-card" aria-labelledby="login-title">
       <header class="login-header">
-        
+        <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Toggle dark and light mode">◐</button>
         <h1 id="login-title">Log in</h1>
         <p class="subtitle">Enter your details below to continue.</p>
       </header>
@@ -81,6 +90,15 @@
   </main>
 
 <script>
+  var themeToggle = document.getElementById("theme-toggle");
+
+  themeToggle.addEventListener("click", function () {
+    var root = document.documentElement;
+    var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+  });
+
   var form = document.querySelector(".login-form");
   var emailInput = document.getElementById("email");
   var passwordInput = document.getElementById("password");
