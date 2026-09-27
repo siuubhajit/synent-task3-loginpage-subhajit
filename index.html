@@ -72,7 +72,10 @@
           <label for="remember">Remember me</label>
         </div>
 
-        <button type="submit" class="login-button">Log in</button>
+        <button type="submit" class="login-button" id="login-button">
+          <span class="button-text">Log in</span>
+          <span class="spinner" aria-hidden="true"></span>
+        </button>
       </form>
     </section>
   </main>
@@ -123,7 +126,19 @@
 
     if (emailError.textContent || passwordError.textContent) {
       e.preventDefault();
+      return;
     }
+
+    // no real backend behind this demo — fake a short loading state
+    e.preventDefault();
+    var button = document.getElementById("login-button");
+    button.disabled = true;
+    button.classList.add("loading");
+
+    setTimeout(function () {
+      button.disabled = false;
+      button.classList.remove("loading");
+    }, 1500);
   });
 </script>
 </body>
