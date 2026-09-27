@@ -170,6 +170,26 @@ input {
   color: var(--accent-dark);
 }
 
+.remember-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.remember-row input {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+.remember-row label {
+  font-size: 14px;
+  color: var(--muted);
+  cursor: pointer;
+}
+
 .field-error {
   min-height: 18px;
   margin-top: 6px;
